@@ -94,7 +94,7 @@ if(isset($_POST['proceed_to_payment']) || isset($_POST['update_shipping']))
 	$post_data['cus_city'] = "";
 	$post_data['cus_state'] = "";
 	$post_data['cus_postcode'] = "";
-	$post_data['cus_country'] = "Bangladesh";
+	$post_data['cus_country'] = "Pakistan";
 	$post_data['cus_phone'] = $_SESSION['SSCF_login_user_mobile'];
 	$post_data['cus_fax'] = "";
 	

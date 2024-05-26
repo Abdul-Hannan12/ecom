@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 06, 2020 at 06:20 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.3
+-- Generation Time: May 26, 2024 at 06:02 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -38,17 +37,15 @@ CREATE TABLE `admins` (
   `admin_type` enum('Root Admin','Content Manager','Sales Manager','Technical Operator') NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `admins`
 --
 
 INSERT INTO `admins` (`id`, `admin_name`, `admin_email`, `admin_image`, `admin_password`, `admin_status`, `admin_type`, `created_at`, `updated_at`) VALUES
-(1, 'Nirjhor Anjum Sir', 'nirjhor@adnsl.net', 'ADMINIMAGE_20200706021804_nirjhoranjumsir.png', '6367c48dd193d56ea7b0baad25b19455e529f5ee', 'Active', 'Root Admin', '2020-07-06 02:18:04', NULL),
-(2, 'Md. Abdullah Al Mamun Roni', 'md.aamroni@hotmail.com', 'ADMINIMAGE_20200706021844_aamroni.png', '04974f51537a701bcdf340064418a10d3895dde1', 'Active', 'Root Admin', '2020-07-06 02:18:44', NULL),
-(3, 'Jhon Doe', 'jhondoe@gmail.com', 'ADMINIMAGE_20200706021940_jhon.png', '6367c48dd193d56ea7b0baad25b19455e529f5ee', 'Active', 'Content Manager', '2020-07-06 02:19:40', NULL),
-(4, 'Al Mamun', 'md.aamroni@yahoo.com', 'ADMINIMAGE_20200706022232_roni.jpg', '6367c48dd193d56ea7b0baad25b19455e529f5ee', 'Active', 'Technical Operator', '2020-07-06 02:22:32', NULL);
+(1, 'Abdul Wasay', 'ywrabdulwasay@gmail.com', 'ADMINIMAGE_20200706021804_nirjhoranjumsir.png', '6367c48dd193d56ea7b0baad25b19455e529f5ee', 'Active', 'Root Admin', '2020-07-06 02:18:04', NULL),
+(2, 'Haseeb Khan', 'haseeb@gmail.com', 'ADMINIMAGE_20200706021844_aamroni.png', '04974f51537a701bcdf340064418a10d3895dde1', 'Active', 'Root Admin', '2020-07-06 02:18:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -62,7 +59,7 @@ CREATE TABLE `categories` (
   `category_status` enum('Active','Inactive') NOT NULL DEFAULT 'Active',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `categories`
@@ -93,7 +90,7 @@ CREATE TABLE `contacts` (
   `contacts_overview` varchar(512) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `contacts`
@@ -118,7 +115,7 @@ CREATE TABLE `customers` (
   `customer_status` enum('Active','Inactive') NOT NULL DEFAULT 'Active',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `customers`
@@ -132,7 +129,8 @@ INSERT INTO `customers` (`id`, `customer_name`, `customer_email`, `customer_mobi
 (8, 'Jobayer Tuser', 'jobayertuser@gmail.com', '01645770422', 'Mohammadpur-1216, Dhaka, Bangladesh', '6367c48dd193d56ea7b0baad25b19455e529f5ee', 'Active', '2020-07-06 09:48:31', NULL),
 (9, 'Ahsan Habib', 'ahsanhabib@gmail.com', '01645770422', 'Dhaka, Bangladesh', '6367c48dd193d56ea7b0baad25b19455e529f5ee', 'Active', '2020-07-06 09:53:19', NULL),
 (13, 'Ahsan Habib', 'ahsanhabib@gmail.com', '01645770422', 'Dhaka, Bangladesh', '6367c48dd193d56ea7b0baad25b19455e529f5ee', 'Active', '2020-07-06 09:55:57', NULL),
-(14, 'Ahsan Habib', 'ahsanhabib@gmail.com', '01645770422', 'Dhaka, Bangladesh', '6367c48dd193d56ea7b0baad25b19455e529f5ee', 'Active', '2020-07-06 09:56:40', NULL);
+(14, 'Ahsan Habib', 'ahsanhabib@gmail.com', '01645770422', 'Dhaka, Bangladesh', '6367c48dd193d56ea7b0baad25b19455e529f5ee', 'Active', '2020-07-06 09:56:40', NULL),
+(15, 'Abdul Wasay', 'yrwabdulwasay@gmail.com', '03307050105', 'peshawar', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'Active', '2024-05-26 20:06:27', NULL);
 
 -- --------------------------------------------------------
 
@@ -146,7 +144,7 @@ CREATE TABLE `deliveries` (
   `shipping_charge` enum('50','120') NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -160,7 +158,7 @@ CREATE TABLE `discounts` (
   `price_discount_amount` double NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -177,7 +175,7 @@ CREATE TABLE `invoices` (
   `transaction_amount` double NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `invoices`
@@ -185,7 +183,8 @@ CREATE TABLE `invoices` (
 
 INSERT INTO `invoices` (`id`, `invoice_id`, `customer_id`, `shipping_id`, `order_id`, `transaction_amount`, `created_at`, `updated_at`) VALUES
 (1, 'COD#86237', 3, 1, 1, 9470, '2020-07-06 09:04:10', NULL),
-(2, '20070695548Tp5hxKeh1HPezyg', 9, 2, 2, 21078, '2020-07-06 10:02:09', NULL);
+(2, '20070695548Tp5hxKeh1HPezyg', 9, 2, 2, 21078, '2020-07-06 10:02:09', NULL),
+(3, 'COD#51022', 15, 4, 3, 859, '2024-05-26 20:53:06', NULL);
 
 -- --------------------------------------------------------
 
@@ -198,7 +197,14 @@ CREATE TABLE `newsletters` (
   `newsletter_email` varchar(128) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `newsletters`
+--
+
+INSERT INTO `newsletters` (`id`, `newsletter_email`, `created_at`, `updated_at`) VALUES
+(1, 'abc@gmcil.com', '2024-05-26 19:34:41', NULL);
 
 -- --------------------------------------------------------
 
@@ -221,7 +227,7 @@ CREATE TABLE `orders` (
   `order_item_status` enum('Pending','Processing','Completed','Cancelled') NOT NULL DEFAULT 'Pending',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `orders`
@@ -229,7 +235,8 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `customer_id`, `order_date`, `sub_total`, `tax`, `delivery_charge`, `discount_amount`, `grand_total`, `payment_method`, `transaction_id`, `transaction_status`, `order_item_status`, `created_at`, `updated_at`) VALUES
 (1, 3, '2020-07-06 09:02:32', 8698, 652.35, 120, 0, 9470, 'Cash On Delivery', 'COD#3', 'Unpaid', 'Pending', '2020-07-06 09:02:32', NULL),
-(2, 9, '2020-07-06 10:00:01', 19496, 1462.2, 120, 0, 21078, 'SSL COMMERZ', '20070695548h40YeCxaiNzdD8D', 'Paid', 'Pending', '2020-07-06 10:00:01', NULL);
+(2, 9, '2020-07-06 10:00:01', 19496, 1462.2, 120, 0, 21078, 'SSL COMMERZ', '20070695548h40YeCxaiNzdD8D', 'Paid', 'Pending', '2020-07-06 10:00:01', NULL),
+(3, 15, '2024-05-26 20:51:12', 799, 59.925, 120, 0, 859, 'Cash On Delivery', 'COD#15', 'Unpaid', 'Pending', '2024-05-26 20:51:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -246,7 +253,7 @@ CREATE TABLE `order_items` (
   `prod_quantity` int(11) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `order_items`
@@ -258,7 +265,8 @@ INSERT INTO `order_items` (`id`, `customer_id`, `order_id`, `product_id`, `produ
 (3, 9, 2, 17, 4799, 1, '2020-07-06 10:00:01', NULL),
 (4, 9, 2, 39, 7499, 1, '2020-07-06 10:00:01', NULL),
 (5, 9, 2, 45, 4899, 1, '2020-07-06 10:00:01', NULL),
-(6, 9, 2, 48, 2299, 1, '2020-07-06 10:00:01', NULL);
+(6, 9, 2, 48, 2299, 1, '2020-07-06 10:00:01', NULL),
+(7, 15, 3, 24, 799, 1, '2024-05-26 20:51:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -273,7 +281,7 @@ CREATE TABLE `pages` (
   `page_status` enum('Active','Inactive') NOT NULL DEFAULT 'Active',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -302,7 +310,7 @@ CREATE TABLE `products` (
   `products_image_one` text DEFAULT NULL,
   `products_image_two` text DEFAULT NULL,
   `products_image_three` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `products`
@@ -399,15 +407,17 @@ CREATE TABLE `shippings` (
   `shipcstmr_country` varchar(64) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `shippings`
 --
 
 INSERT INTO `shippings` (`id`, `customer_id`, `order_id`, `shipcstmr_name`, `shipcstmr_mobile`, `shipcstmr_profession`, `shipcstmr_streetadd`, `shipcstmr_city`, `shipcstmr_zip`, `shipcstmr_country`, `created_at`, `updated_at`) VALUES
-(1, 3, 1, 'Firoz Ahmed', '01645770422', 'Graphics Designer', 'Police Line, Panchabati', 'Fatullah', '1405', 'Bangladesh', '2020-07-06 09:03:55', NULL),
-(2, 9, 2, 'Shahnaz Khanam', '01645770422', 'Housewife', 'Main Road # 2/B', 'Baridhara', '1406', 'Bangladesh', '2020-07-06 10:02:01', NULL);
+(1, 3, 1, 'Firoz Ahmed', '03339483948', 'Graphics Designer', 'Hashtnagri', 'Peshawar', '25000', 'Pakistan', '2020-07-06 09:03:55', NULL),
+(2, 9, 2, 'Shahnaz Khanam', '03228409384', 'Housewife', 'G-8', 'Islamabad', '44220', 'Pakistan', '2020-07-06 10:02:01', NULL),
+(3, 15, 3, 'dfdffsf dfsdfsdfs', '342384092384', '', 'dsdfsfsdfsd', 'sdfsdfsdfsdf', '25000', 'Pakistan', '2024-05-26 20:52:17', NULL),
+(4, 15, 3, 'dfdffsf dfsdfsdfs', '342384092384', '', 'dsdfsfsdfsd', 'sdfsdfsdfsdf', '25000', 'Pakistan', '2024-05-26 20:52:59', NULL);
 
 -- --------------------------------------------------------
 
@@ -422,7 +432,7 @@ CREATE TABLE `shopcarts` (
   `quantity` int(11) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -438,7 +448,7 @@ CREATE TABLE `slides` (
   `slider_sequence` int(11) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `slides`
@@ -466,7 +476,7 @@ CREATE TABLE `subcategories` (
   `subcategory_banner` text NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `subcategories`
@@ -639,13 +649,13 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'CUSTOMERS ID', AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'CUSTOMERS ID', AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `deliveries`
 --
 ALTER TABLE `deliveries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'DELIVERIES ID', AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'DELIVERIES ID', AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `discounts`
@@ -657,25 +667,25 @@ ALTER TABLE `discounts`
 -- AUTO_INCREMENT for table `invoices`
 --
 ALTER TABLE `invoices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'INVOICE ID', AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'INVOICE ID', AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `newsletters`
 --
 ALTER TABLE `newsletters`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'NEWSLETTER ID';
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'NEWSLETTER ID', AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ORDERS ID', AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ORDERS ID', AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ORDER ITEMS ID', AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ORDER ITEMS ID', AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `pages`
@@ -693,13 +703,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `shippings`
 --
 ALTER TABLE `shippings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'SHIPPING ID', AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'SHIPPING ID', AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `shopcarts`
 --
 ALTER TABLE `shopcarts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'SHOPCARTS ID', AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'SHOPCARTS ID', AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `slides`
